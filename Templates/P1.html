@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <style>
+        /* === Styles Généraux === */
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        /* === Titre Principal === */
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* === Texte descriptif === */
+        h3 {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* === Formulaire === */
+        div {
+            max-width: 450px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 20px;
+        }
+
+        /* === Labels === */
+        label {
+            font-size: 1rem;
+            font-weight: 600;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* === Champs de saisie === */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* === Bouton === */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #ff7b00;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: #ff4d00;
+            transform: translateY(-2px);
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Bienvenue</h1>
+    <h3>Marc veut vendre sa voiture.
+        Mais Marc ne connait pas les différentes caractéristiques de sa voiture pour la vendre, il sait juste que sa voiture est de 2020, n'a eu aucun propriétaire avant (Owner_Type), utilise le pétrole comme carburant et a 5 sièges.
+        Aide Marc à trouver le reste des caractéristiques de sa voiture pour prédire son prix.
+    </h3>
+
+    <div>
+        <h2></h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div>
+                <label>Ton Nom???</label>
+                <input type="text" name="username" required>
+            </div>
+            <div>
+                <label>Quelle est la marque de la voiture alors ?</label>
+                <input type="password" name="password" required>
+                <!-- 01010100 01100001 01110100 01100001 -->
+            </div>
+            <div>
+                <button type="submit">Tu as trouvé?</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

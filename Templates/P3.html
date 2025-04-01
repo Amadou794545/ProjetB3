@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serveur Socket - Connexion</title>
+    <style>
+        /* === Police Hacker === */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        /* === Styles Généraux === */
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* === Effet de Texte Type Terminal === */
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            animation: glitch 1s infinite alternate;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 0px #ff0000, -2px -2px 0px #00ff00; }
+            100% { text-shadow: -2px -2px 0px #ff0000, 2px 2px 0px #00ff00; }
+        }
+
+        h3 {
+            font-size: 1rem;
+            max-width: 700px;
+            background: rgba(0, 255, 0, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px auto;
+            border: 1px solid #00ff00;
+            box-shadow: 0px 0px 5px #00ff00;
+            font-style: italic;
+        }
+
+        /* === Formulaire Stylé === */
+        div {
+            max-width: 400px;
+            width: 90%;
+            background: rgba(0, 255, 0, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #00ff00;
+            box-shadow: 0px 0px 10px #00ff00;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* === Champs de saisie === */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            background: #111;
+            color: #00ff00;
+            outline: none;
+            text-align: center;
+            box-shadow: 0px 0px 5px #00ff00;
+        }
+
+        input::placeholder {
+            color: rgba(0, 255, 0, 0.7);
+        }
+
+        input:focus {
+            background: #222;
+            box-shadow: 0px 0px 10px #00ff00;
+        }
+
+        /* === Bouton Effet Matrix === */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #00ff00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.5);
+        }
+
+        button:hover {
+            background: #009900;
+            transform: scale(1.05);
+        }
+
+        /* === Clignotement du Curseur === */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 16px;
+            background-color: #00ff00;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Serveur en attente<span class="cursor"></span></h1>
+
+    <h3>Marc cherche maintenant la puissance de sa voiture.<br>
+        Son ami "S" lui a envoyé un message via un serveur socket. <br>
+        Host: <b>127.0.0.1</b> | Port: <b>65432</b><br>
+        Essaye de récupérer le message pour l'aider à vendre sa voiture.</h3>
+
+    <div>
+        <h2>Connexion</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div>
+                <label>Mot de passe</label>
+                <input type="password" name="password" required placeholder="Ex: LeMessageDuServeur">
+            </div>
+            <div>
+                <button type="submit">???????????????????????????</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
